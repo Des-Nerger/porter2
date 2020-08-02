@@ -43,13 +43,16 @@
 // You can run the tool by `go run suffixfsm.go <filename>`.
 package porter2
 
-import "unicode"
+import (
+	"strings"
+	"unicode"
+)
 
 // Stem takes a string and returns the stemmed version based on the Porter2 algorithm.
 func Stem(s string) string {
 	// If the word has two letters or less, leave it as it is.
 	if len(s) <= 2 {
-		return s
+		return strings.ToLower(s)
 	}
 
 	// Convert s from string to lower case rune slice
